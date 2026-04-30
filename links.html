@@ -1,0 +1,133 @@
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Цифровой двойник — Ссылки и JS</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+<header> 
+    <h1>&#128187; Цифровой двойник: Ресурсы</h1> 
+    <p><i>Полезные ссылки и интерактивная модель управления</i></p> 
+</header> 
+<nav> 
+    <a href="index.html">&#127968; Главная</a> 
+    <a href="info.html">&#128196; Информация</a> 
+    <a href="media.html">&#127916; Медиа</a> 
+    <a href="links.html">&#128279; Ссылки и JS</a> 
+</nav> 
+<main> 
+    <h2>Ведущие платформы и стандарты</h2> 
+ 
+    <p> 
+        <a href="https://www.siemens.com/global/en/products/automation/topic-areas/digital-enterprise/digital-twin.html" target="_blank"> 
+            &#128279; Siemens Digital Twin 
+        </a> 
+        — комплексные решения для создания цифровых двойников продукта и производства. 
+    </p> 
+ 
+    <p> 
+        <a href="https://www.ansys.com/products/digital-twin" target="_blank"> 
+            &#129514; Ansys Digital Twin Solutions 
+        </a> 
+        — ПО для физического моделирования и анализа данных с датчиков. 
+    </p> 
+ 
+    <p> 
+        <a href="https://www.sap.com/products/scm/digital-twin.html" target="_blank"> 
+            &#128200; SAP Digital Twin 
+        </a> 
+        — управление жизненным циклом активов через виртуальные копии. 
+    </p> 
+ 
+    <p> 
+        <a href="https://www.digitaltwinconsortium.org" target="_blank"> 
+            &#127760; Digital Twin Consortium 
+        </a> 
+        — международные стандарты и лучшие практики внедрения технологии. 
+    </p> 
+ 
+    <p> 
+        <a href="https://www.nvidia.com/en-us/omniverse/solutions/industrial-digital-twins/" target="_blank"> 
+            &#128170; NVIDIA Omniverse 
+        </a> 
+        — платформа для фотореалистичной визуализации заводов в реальном времени. 
+    </p> 
+ 
+    <p>Нужна консультация? Пишите:  
+       <a href="mailto:dt.expert.a323@example.com">dt.expert.a323@example.com</a> 
+    </p> 
+ 
+    <hr style="margin: 30px 0; border-color: #263238;">
+
+    <h2>&#9881; Интерактив: Управление виртуальным цехом</h2> 
+ 
+    <button id="btnClassify" onclick="toggleClassification()"> 
+        &#128065; Показать архитектуру обмена данными 
+    </button> 
+ 
+    <div id="classificationBlock" class="info-box hidden"> 
+        <h3>Схема передачи данных:</h3> 
+        <ul> 
+            <li><b>Физический уровень:</b> Датчики (вибрация, температура, ток).</li> 
+            <li><b>Связь:</b> Протоколы MQTT, OPC UA, HTTP.</li> 
+            <li><b>Облако:</b> Хранение Big Data и обработка алгоритмами ИИ.</li> 
+            <li><b>Визуализация:</b> Дашборды и 3D-модели для принятия решений.</li> 
+        </ul> 
+    </div> 
+ 
+    <br> 
+ 
+    <div class="info-box">
+        <h3>&#128260; Виртуальный контроллер</h3>
+        <p>Загрузка производственной линии: <b id="loadValue">50%</b></p>
+        <input type="range" id="loadSlider" min="0" max="100" value="50" style="width: 100%;" oninput="updateTwin()">
+        
+        <p id="statusText" style="margin-top: 15px; font-weight: bold; color: #00d4ff;">
+            Статус: Система работает в штатном режиме.
+        </p>
+    </div>
+ 
+</main> 
+<footer> 
+    <p>&#169; 2026 Цифровой двойник производства | Группа А323</p> 
+</footer> 
+
+<script>
+    // Показ/скрытие блока
+    function toggleClassification() {
+        const block = document.getElementById('classificationBlock');
+        const btn = document.getElementById('btnClassify');
+        if (block.classList.contains('hidden')) {
+            block.classList.remove('hidden');
+            btn.innerHTML = '&#128064; Скрыть архитектуру';
+        } else {
+            block.classList.add('hidden');
+            btn.innerHTML = '&#128065; Показать архитектуру';
+        }
+    }
+
+    // Интерактив со слайдером (Имитация цифрового двойника)
+    function updateTwin() {
+        const slider = document.getElementById('loadSlider');
+        const valDisplay = document.getElementById('loadValue');
+        const statusText = document.getElementById('statusText');
+        const value = slider.value;
+
+        valDisplay.innerText = value + '%';
+
+        if (value > 85) {
+            statusText.innerText = "ВНИМАНИЕ: Критическая нагрузка! Риск износа оборудования.";
+            statusText.style.color = "#ff4444";
+        } else if (value < 20) {
+            statusText.innerText = "ПРЕДУПРЕЖДЕНИЕ: Низкая эффективность. Простой мощностей.";
+            statusText.style.color = "#ffbb33";
+        } else {
+            statusText.innerText = "Статус: Система работает в штатном режиме.";
+            statusText.style.color = "#00d4ff";
+        }
+    }
+</script>
+ 
+</body> 
+</html>
